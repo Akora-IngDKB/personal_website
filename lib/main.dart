@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Akora Ing. DKB',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.teal,
       ),
       home: Homepage(),
     );
