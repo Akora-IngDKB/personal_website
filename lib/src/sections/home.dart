@@ -22,7 +22,7 @@ class HomeSection extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.teal,
                     fontSize: 24,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w700,
                     letterSpacing: 1.4,
                   ),
                 ),
@@ -32,7 +32,7 @@ class HomeSection extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.blueGrey[900],
                     fontSize: 50,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 SizedBox(height: 16),
@@ -46,13 +46,14 @@ class HomeSection extends StatelessWidget {
                 ),
                 SizedBox(height: 24),
                 Text(
-                  'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
-                  ' Perspiciatis quia eligendi rerum modi sapiente totam ducimus neque quod eos cum,'
-                  ' libero quas aliquid repellat a, nulla unde dolores illum deserunt.',
+                  "I build neat, cool and scalable mobile apps with Flutter and I'm an aspiring deep learning engineer."
+                  '\nI love to learn and build new stuff that are beneficial to the community and cool to work on.'
+                  '\nI also have great interest in the open source community.',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 16,
                     letterSpacing: 1.2,
+                    height: 1.3,
                   ),
                 ),
                 SizedBox(height: 30),

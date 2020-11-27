@@ -11,7 +11,7 @@ class _NavbarState extends State<Navbar> {
   final textStyle = TextStyle(
     color: Colors.white,
     fontSize: 17,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
 
   final items = [
@@ -38,11 +38,16 @@ class _NavbarState extends State<Navbar> {
                 style: textStyle.copyWith(
                   color: Colors.black.withOpacity(0.75),
                   fontSize: 18,
+                  fontFamily: 'Ubuntu',
                 ),
                 children: [
                   TextSpan(
                     text: 'ng. DKB',
-                    style: textStyle.copyWith(color: Colors.teal, fontSize: 18),
+                    style: textStyle.copyWith(
+                      color: Colors.teal,
+                      fontSize: 18,
+                      fontFamily: 'Ubuntu',
+                    ),
                   ),
                 ],
               ),
@@ -64,6 +69,7 @@ class _NavbarState extends State<Navbar> {
                       Text(
                         item,
                         style: textStyle.copyWith(
+                          fontWeight: FontWeight.w500,
                           color: textStyle.color.withOpacity(
                             selectedIndex == items.indexOf(item) ? 1.0 : 0.75,
                           ),
