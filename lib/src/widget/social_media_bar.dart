@@ -8,27 +8,101 @@ class SocialMediaBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 12),
       margin: const EdgeInsets.only(left: 32),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.teal.withOpacity(0.3), width: 1),
+        border: Border.all(color: Colors.teal.withOpacity(0.3), width: 1.4),
         borderRadius: BorderRadius.all(Radius.circular(35)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(SocialIcons.github),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.github,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
           SizedBox(height: 30),
-          Icon(SocialIcons.linkedin),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.linkedin,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
           SizedBox(height: 30),
-          Icon(SocialIcons.twitter),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.envelope,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
           SizedBox(height: 30),
-          Icon(SocialIcons.instagram),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.twitter,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
           SizedBox(height: 30),
-          Icon(SocialIcons.facebook),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.instagram,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
           SizedBox(height: 30),
-          Icon(SocialIcons.medium),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.facebook,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
           SizedBox(height: 30),
-          Icon(SocialIcons.play_store),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.medium,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
           SizedBox(height: 30),
-          Icon(SocialIcons.whatsapp),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.play_store,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
+          SizedBox(height: 30),
+          InkWell(
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            onTap: () {},
+            child: Icon(
+              SocialIcons.whatsapp,
+              color: Colors.teal.withOpacity(0.75),
+            ),
+          ),
         ],
       ),
     );

@@ -54,6 +54,24 @@ class HomeSection extends StatelessWidget {
                     letterSpacing: 1.2,
                   ),
                 ),
+                SizedBox(height: 30),
+                OutlineButton(
+                  child: Text(
+                    'Hire Me',
+                    style: TextStyle(
+                      color: Colors.teal,
+                      fontSize: 17,
+                    ),
+                  ),
+                  onPressed: () {},
+                  borderSide: BorderSide(color: Colors.teal),
+                  shape: StadiumBorder(),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                    vertical: 20,
+                  ),
+                  splashColor: Colors.teal.withOpacity(0.1),
+                ),
               ],
             ),
           ),
