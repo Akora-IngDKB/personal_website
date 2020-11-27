@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_web/src/social_icons.dart';
+import 'package:personal_web/src/utils/social_icons.dart';
 
 class SocialMediaBar extends StatelessWidget {
   @override
