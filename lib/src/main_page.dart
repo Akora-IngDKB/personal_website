@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:personal_web/src/widget/home_body.dart';
-import 'package:personal_web/src/widget/social_media_bar.dart';
+import 'package:personal_web/src/body.dart';
+import 'package:personal_web/src/components/social_media_bar.dart';
 
-class Homepage extends StatelessWidget {
+class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           CustomPaint(painter: _BackgroundPainter(), size: Size.infinite),
-          HomeBody(),
+          PageBody(),
           Align(alignment: Alignment.centerLeft, child: SocialMediaBar()),
         ],
       ),
