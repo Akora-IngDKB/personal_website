@@ -12,6 +12,11 @@ class _AboutSectionState extends State<AboutSection>
   static bool showStack1 = false;
   static bool showStack2 = false;
 
+  static bool whoSeen = false;
+  static bool aboutSeen = false;
+  static bool stack1Seen = false;
+  static bool stack2Seen = false;
+
   final stack = [
     'Dart (Flutter)',
     'Java (Android)',
@@ -46,6 +51,7 @@ class _AboutSectionState extends State<AboutSection>
                 children: [
                   Typewriter(
                     'Who am I?',
+                    animate: !whoSeen,
                     duration: const Duration(seconds: 1),
                     textStyle: TextStyle(
                       color: Colors.white,
@@ -56,6 +62,7 @@ class _AboutSectionState extends State<AboutSection>
                     onEnd: () {
                       setState(() {
                         showAbout = true;
+                        whoSeen = true;
                       });
                     },
                   ),
@@ -71,6 +78,7 @@ class _AboutSectionState extends State<AboutSection>
                       'I love to create performant and interesting stuff that are beneficial to the community.\n'
                       'I enjoy learning and exploring new areas in the technologies I work with and even the ones outside my stack.\n\n'
                       "I'm a final year BSc Electrical and Electronic Engineering student at the Kwame Nkrumah University of Science and Technology.",
+                      animate: !aboutSeen,
                       duration: const Duration(seconds: 10),
                       textStyle: TextStyle(
                         color: Colors.white,
@@ -81,6 +89,7 @@ class _AboutSectionState extends State<AboutSection>
                       onEnd: () {
                         setState(() {
                           showStack1 = true;
+                          aboutSeen = true;
                         });
                       },
                     ),
@@ -88,6 +97,7 @@ class _AboutSectionState extends State<AboutSection>
                     SizedBox(height: 54),
                     Typewriter(
                       'What do I work with?',
+                      animate: !stack1Seen,
                       duration: const Duration(seconds: 1),
                       textStyle: TextStyle(
                         color: Colors.white,
@@ -98,6 +108,7 @@ class _AboutSectionState extends State<AboutSection>
                       onEnd: () {
                         setState(() {
                           showStack2 = true;
+                          stack1Seen = true;
                         });
                       },
                     ),
@@ -123,12 +134,18 @@ class _AboutSectionState extends State<AboutSection>
                             SizedBox(width: 5),
                             Typewriter(
                               s,
+                              animate: !stack2Seen,
                               duration: const Duration(seconds: 1),
                               textStyle: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                                 letterSpacing: 1.4,
                               ),
+                              onEnd: () {
+                                setState(() {
+                                  stack2Seen = true;
+                                });
+                              },
                             ),
                           ],
                         );

@@ -11,6 +11,11 @@ class HomeSection extends StatefulWidget {
 
 class _HomeSectionState extends State<HomeSection>
     with SingleTickerProviderStateMixin {
+  static bool helloSeen = false;
+  static bool nameSeen = false;
+  static bool positionSeen = false;
+  static bool abstractSeen = false;
+
   static bool showName = false;
   static bool showPosition = false;
   static bool showAbstract = false;
@@ -36,6 +41,7 @@ class _HomeSectionState extends State<HomeSection>
                 children: [
                   Typewriter(
                     '¡Hola! Soy...',
+                    animate: !helloSeen,
                     textStyle: TextStyle(
                       color: Colors.teal,
                       fontSize: 24,
@@ -45,6 +51,7 @@ class _HomeSectionState extends State<HomeSection>
                     onEnd: () {
                       setState(() {
                         showName = true;
+                        helloSeen = true;
                       });
                     },
                   ),
@@ -52,6 +59,7 @@ class _HomeSectionState extends State<HomeSection>
                     SizedBox(height: 16),
                     Typewriter(
                       'Akora Ing. DKB',
+                      animate: !nameSeen,
                       textStyle: TextStyle(
                         color: Colors.blueGrey[900],
                         fontSize: 50,
@@ -60,6 +68,7 @@ class _HomeSectionState extends State<HomeSection>
                       onEnd: () {
                         setState(() {
                           showPosition = true;
+                          nameSeen = true;
                         });
                       },
                     ),
@@ -68,6 +77,7 @@ class _HomeSectionState extends State<HomeSection>
                     SizedBox(height: 16),
                     Typewriter(
                       'Mobile App Developer & AI Engineer',
+                      animate: !positionSeen,
                       textStyle: TextStyle(
                         color: Colors.blueGrey[900],
                         fontSize: 20,
@@ -76,6 +86,7 @@ class _HomeSectionState extends State<HomeSection>
                       onEnd: () {
                         setState(() {
                           showAbstract = true;
+                          positionSeen = true;
                         });
                       },
                     ),
@@ -86,6 +97,7 @@ class _HomeSectionState extends State<HomeSection>
                       "I build neat, cool and scalable mobile apps with Flutter and I'm an aspiring deep learning engineer.\n"
                       'I love to learn and build new stuff that are beneficial to the community and cool to work on.\n'
                       'I also have great interest in the open source community.',
+                      animate: !abstractSeen,
                       textStyle: TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
@@ -96,6 +108,7 @@ class _HomeSectionState extends State<HomeSection>
                         Future.delayed(Duration(milliseconds: 500), () {
                           setState(() {
                             showHireMe = true;
+                            abstractSeen = true;
                           });
                         });
                       },
@@ -113,11 +126,18 @@ class _HomeSectionState extends State<HomeSection>
           Expanded(
             flex: 8,
             child: Transform.rotate(
-              angle: 2 * pi - (pi / 8.2),
-              child: Image.asset(
-                'assets/images/me.png',
-                fit: BoxFit.cover,
-                width: 500,
+              angle: 2 * pi - (pi / 4),
+              child: Container(
+                width: 400,
+                height: 400,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.transparent,
+                  border: Border.all(color: Colors.white, width: 2),
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/me.png'),
+                  ),
+                ),
               ),
             ),
           ),

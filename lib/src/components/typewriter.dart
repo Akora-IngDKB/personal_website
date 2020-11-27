@@ -6,12 +6,14 @@ class Typewriter extends StatefulWidget {
   final TextStyle textStyle;
   final VoidCallback onEnd;
   final Duration duration;
+  final bool animate;
 
   Typewriter(
     this.text, {
     this.curve = Curves.easeInOut,
     this.textStyle,
     this.onEnd,
+    this.animate = true,
     this.duration = const Duration(seconds: 2),
   });
 
@@ -44,7 +46,7 @@ class _TypewriterState extends State<Typewriter> with TickerProviderStateMixin {
         setState(() {});
       });
 
-    controller.forward();
+    if (widget.animate) controller.forward();
 
     controller.addListener(() {
       if (widget.onEnd != null &&
@@ -68,7 +70,10 @@ class _TypewriterState extends State<Typewriter> with TickerProviderStateMixin {
           : AnimatedBuilder(
               animation: _characterCount,
               builder: (BuildContext context, Widget child) {
-                String text = widget.text.substring(0, _characterCount.value);
+                String text = !widget.animate
+                    ? widget.text
+                    : widget.text.substring(0, _characterCount.value);
+
                 return Text(text, style: widget.textStyle);
               },
             ),

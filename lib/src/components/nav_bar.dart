@@ -44,26 +44,44 @@ class _NavbarState extends State<Navbar> {
       child: Row(
         children: [
           Expanded(
-            child: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                text: 'Akora I',
-                style: textStyle.copyWith(
-                  color: Colors.black.withOpacity(0.75),
-                  fontSize: 18,
-                  fontFamily: 'Ubuntu',
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.teal,
+                  radius: 15,
+                  child: Text(
+                    'D',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-                children: [
-                  TextSpan(
-                    text: 'ng. DKB',
+                SizedBox(width: 8),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: 'Akora I',
                     style: textStyle.copyWith(
-                      color: Colors.teal,
+                      color: Colors.black.withOpacity(0.75),
                       fontSize: 18,
                       fontFamily: 'Ubuntu',
                     ),
+                    children: [
+                      TextSpan(
+                        text: 'ng. DKB',
+                        style: textStyle.copyWith(
+                          color: Colors.teal,
+                          fontSize: 18,
+                          fontFamily: 'Ubuntu',
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Expanded(
@@ -73,15 +91,8 @@ class _NavbarState extends State<Navbar> {
                 return InkWell(
                   onTap: () {
                     switch (item) {
-                      case 'Resume':
-                        UrlHelper.downloadResume();
-                        break;
-                      case 'Blog':
-                        UrlHelper.launchUrl(
-                          'https://medium.com/@debrahkwesibuabeng2',
-                        );
-                        break;
-                      default:
+                      case 'Home':
+                      case 'About':
                         setState(() {
                           selectedIndex = items.indexOf(item);
                         });
@@ -89,36 +100,110 @@ class _NavbarState extends State<Navbar> {
                         if (widget.onItemSelected != null) {
                           widget.onItemSelected(selectedIndex);
                         }
+                        break;
+                      case 'Resume':
+                        break;
+                      case 'Blog':
+                        UrlHelper.launchUrl(
+                          'https://medium.com/@debrahkwesibuabeng2',
+                        );
+                        break;
+                      default:
+                      // setState(() {
+                      //   selectedIndex = items.indexOf(item);
+                      // });
+
+                      // if (widget.onItemSelected != null) {
+                      //   widget.onItemSelected(selectedIndex);
+                      // }
                     }
                   },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        item,
-                        style: textStyle.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: textStyle.color.withOpacity(
-                            selectedIndex == items.indexOf(item) ? 1.0 : 0.75,
-                          ),
+                  child: item == 'Resume'
+                      ? _ResumeButton()
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              item,
+                              style: textStyle.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: textStyle.color.withOpacity(
+                                  selectedIndex == items.indexOf(item)
+                                      ? 1.0
+                                      : 0.75,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            if (item != 'Resume')
+                              AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
+                                height: 2,
+                                width: 20,
+                                color: selectedIndex == items.indexOf(item)
+                                    ? Colors.white
+                                    : Colors.transparent,
+                              ),
+                          ],
                         ),
-                      ),
-                      SizedBox(height: 4),
-                      AnimatedContainer(
-                        duration: Duration(milliseconds: 300),
-                        height: 2,
-                        width: 20,
-                        color: selectedIndex == items.indexOf(item)
-                            ? Colors.white
-                            : Colors.transparent,
-                      ),
-                    ],
-                  ),
                 );
               }).toList(),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ResumeButton extends StatefulWidget {
+  @override
+  _ResumeButtonState createState() => _ResumeButtonState();
+}
+
+class _ResumeButtonState extends State<_ResumeButton> {
+  bool hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      onTap: () {
+        UrlHelper.downloadResume();
+      },
+      onHover: (value) {
+        if (mounted) {
+          setState(() {
+            hovered = value;
+          });
+        }
+      },
+      child: AnimatedContainer(
+        height: 40,
+        duration: kThemeAnimationDuration,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(
+          vertical: 6,
+          horizontal: 10,
+        ),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.white, width: 2),
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+          color: hovered ? Colors.white.withOpacity(0.92) : Colors.teal,
+        ),
+        child: AnimatedDefaultTextStyle(
+          duration: kThemeAnimationDuration,
+          style: TextStyle(
+            color: hovered ? Colors.teal : Colors.white,
+            fontSize: 17,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Ubuntu',
+          ),
+          child: Text(
+            'Resume',
+          ),
+        ),
       ),
     );
   }

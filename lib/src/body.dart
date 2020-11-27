@@ -25,7 +25,7 @@ class _PageBodyState extends State<PageBody> {
         ),
         Expanded(
           child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 500),
+            duration: kThemeAnimationDuration,
             child: pages[pageIndex],
           ),
         ),
