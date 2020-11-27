@@ -1,9 +1,21 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:personal_web/src/components/typewriter.dart';
 import 'package:personal_web/src/utils/url_helper.dart';
 
-class HomeSection extends StatelessWidget {
+class HomeSection extends StatefulWidget {
+  @override
+  _HomeSectionState createState() => _HomeSectionState();
+}
+
+class _HomeSectionState extends State<HomeSection>
+    with SingleTickerProviderStateMixin {
+  bool showName = false;
+  bool showPosition = false;
+  bool showAbstract = false;
+  bool showHireMe = false;
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -13,59 +25,95 @@ class HomeSection extends StatelessWidget {
           SizedBox(width: 32),
           Expanded(
             flex: 6,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "¡Hola! Soy",
-                  style: TextStyle(
-                    color: Colors.teal,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.4,
+            child: AnimatedSize(
+              vsync: this,
+              duration: kThemeAnimationDuration,
+              alignment: Alignment.topCenter,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Typewriter(
+                    '¡Hola! Soy...',
+                    textStyle: TextStyle(
+                      color: Colors.teal,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 1.4,
+                    ),
+                    onEnd: () {
+                      setState(() {
+                        showName = true;
+                      });
+                    },
                   ),
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'Akora Ing. DKB',
-                  style: TextStyle(
-                    color: Colors.blueGrey[900],
-                    fontSize: 50,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'Mobile App Developer & AI Engineer',
-                  style: TextStyle(
-                    color: Colors.blueGrey[900],
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SizedBox(height: 24),
-                Text(
-                  "I build neat, cool and scalable mobile apps with Flutter and I'm an aspiring deep learning engineer."
-                  '\nI love to learn and build new stuff that are beneficial to the community and cool to work on.'
-                  '\nI also have great interest in the open source community.',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16,
-                    letterSpacing: 1.2,
-                    height: 1.3,
-                  ),
-                ),
-                SizedBox(height: 30),
-                _HireMeButton(),
-              ],
+                  if (showName) ...[
+                    SizedBox(height: 16),
+                    Typewriter(
+                      'Akora Ing. DKB',
+                      textStyle: TextStyle(
+                        color: Colors.blueGrey[900],
+                        fontSize: 50,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      onEnd: () {
+                        setState(() {
+                          showPosition = true;
+                        });
+                      },
+                    ),
+                  ],
+                  if (showPosition) ...[
+                    SizedBox(height: 16),
+                    Typewriter(
+                      'Mobile App Developer & AI Engineer',
+                      textStyle: TextStyle(
+                        color: Colors.blueGrey[900],
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      onEnd: () {
+                        setState(() {
+                          showAbstract = true;
+                        });
+                      },
+                    ),
+                  ],
+                  if (showAbstract) ...[
+                    SizedBox(height: 24),
+                    Typewriter(
+                      "I build neat, cool and scalable mobile apps with Flutter and I'm an aspiring deep learning engineer."
+                      '\nI love to learn and build new stuff that are beneficial to the community and cool to work on.'
+                      '\nI also have great interest in the open source community.',
+                      textStyle: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        letterSpacing: 1.2,
+                        height: 1.3,
+                      ),
+                      onEnd: () {
+                        Future.delayed(Duration(milliseconds: 500), () {
+                          setState(() {
+                            showHireMe = true;
+                          });
+                        });
+                      },
+                    ),
+                  ],
+                  if (showHireMe) ...[
+                    SizedBox(height: 30),
+                    _HireMeButton(),
+                  ],
+                ],
+              ),
             ),
           ),
           SizedBox(width: 36),
           Expanded(
             flex: 8,
             child: Transform.rotate(
-              angle: 2 * pi - (pi / 6),
+              angle: 2 * pi - (pi / 8.2),
               child: Image.asset(
                 'assets/images/DKB.png',
                 fit: BoxFit.cover,

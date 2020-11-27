@@ -60,12 +60,19 @@ class _NavbarState extends State<Navbar> {
               children: items.map((item) {
                 return InkWell(
                   onTap: () {
-                    if (item == 'Resume') {
-                      UrlHelper.downloadResume();
-                    } else {
-                      setState(() {
-                        selectedIndex = items.indexOf(item);
-                      });
+                    switch (item) {
+                      case 'Resume':
+                        UrlHelper.downloadResume();
+                        break;
+                      case 'Blog':
+                        UrlHelper.launchUrl(
+                          'https://medium.com/@debrahkwesibuabeng2',
+                        );
+                        break;
+                      default:
+                        setState(() {
+                          selectedIndex = items.indexOf(item);
+                        });
                     }
                   },
                   child: Column(
