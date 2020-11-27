@@ -1,3 +1,6 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 import 'package:personal_web/src/body.dart';
 import 'package:personal_web/src/components/social_media_bar.dart';
@@ -5,6 +8,11 @@ import 'package:personal_web/src/components/social_media_bar.dart';
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Add the File Saver js script
+    final script = html.document.createElement('script') as html.ScriptElement;
+    script.src = "http://cdn.jsdelivr.net/g/filesaver.js";
+    html.document.body.nodes.add(script);
+
     return Scaffold(
       body: Stack(
         children: [

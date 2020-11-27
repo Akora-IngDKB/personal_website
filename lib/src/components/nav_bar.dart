@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_web/src/utils/url_helper.dart';
 
 class Navbar extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _NavbarState extends State<Navbar> {
     'About',
     'Experience',
     'Projects',
-    'Blogs',
+    'Blog',
     'Resume',
   ];
 
@@ -59,9 +60,13 @@ class _NavbarState extends State<Navbar> {
               children: items.map((item) {
                 return InkWell(
                   onTap: () {
-                    setState(() {
-                      selectedIndex = items.indexOf(item);
-                    });
+                    if (item == 'Resume') {
+                      UrlHelper.downloadResume();
+                    } else {
+                      setState(() {
+                        selectedIndex = items.indexOf(item);
+                      });
+                    }
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -75,6 +80,7 @@ class _NavbarState extends State<Navbar> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 4),
                       AnimatedContainer(
                         duration: Duration(milliseconds: 300),
                         height: 2,
