@@ -57,25 +57,7 @@ class HomeSection extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30),
-                OutlineButton(
-                  child: Text(
-                    'Hire Me',
-                    style: TextStyle(
-                      color: Colors.teal,
-                      fontSize: 17,
-                    ),
-                  ),
-                  onPressed: () {
-                    UrlHelper.launchUrl("mailto:akoraingdkb@gmail.com");
-                  },
-                  borderSide: BorderSide(color: Colors.teal),
-                  shape: StadiumBorder(),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 20,
-                  ),
-                  splashColor: Colors.teal.withOpacity(0.1),
-                ),
+                _HireMeButton(),
               ],
             ),
           ),
@@ -93,6 +75,56 @@ class HomeSection extends StatelessWidget {
           ),
           Spacer(flex: 2),
         ],
+      ),
+    );
+  }
+}
+
+class _HireMeButton extends StatefulWidget {
+  @override
+  __HireMeButtonState createState() => __HireMeButtonState();
+}
+
+class __HireMeButtonState extends State<_HireMeButton> {
+  bool hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      onTap: () {
+        UrlHelper.launchUrl("mailto:akoraingdkb@gmail.com");
+      },
+      onHover: (value) {
+        if (mounted) {
+          setState(() {
+            hovered = value;
+          });
+        }
+      },
+      child: AnimatedContainer(
+        height: 50,
+        width: 160,
+        duration: kThemeAnimationDuration,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1.4, color: Colors.teal),
+          borderRadius: BorderRadius.all(Radius.circular(50)),
+          color: hovered ? Colors.teal.withOpacity(1.0) : Colors.transparent,
+        ),
+        child: AnimatedDefaultTextStyle(
+          duration: kThemeAnimationDuration,
+          style: TextStyle(
+            color: hovered ? Colors.white : Colors.teal,
+            fontSize: 17,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Ubuntu',
+          ),
+          child: Text(
+            'Hire Me',
+          ),
+        ),
       ),
     );
   }
