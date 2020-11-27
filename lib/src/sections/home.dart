@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:personal_web/src/utils/url_helper.dart';
 
 class HomeSection extends StatelessWidget {
   @override
@@ -63,7 +64,9 @@ class HomeSection extends StatelessWidget {
                       fontSize: 17,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    UrlHelper.launchUrl("mailto:akoraingdkb@gmail.com");
+                  },
                   borderSide: BorderSide(color: Colors.teal),
                   shape: StadiumBorder(),
                   padding: const EdgeInsets.symmetric(
