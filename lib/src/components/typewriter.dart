@@ -5,12 +5,14 @@ class Typewriter extends StatefulWidget {
   final Curve curve;
   final TextStyle textStyle;
   final VoidCallback onEnd;
+  final Duration duration;
 
   Typewriter(
     this.text, {
     this.curve = Curves.easeInOut,
     this.textStyle,
     this.onEnd,
+    this.duration = const Duration(seconds: 2),
   });
 
   @override
@@ -27,7 +29,7 @@ class _TypewriterState extends State<Typewriter> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     controller = AnimationController(
-      duration: const Duration(milliseconds: 2000),
+      duration: widget.duration,
       vsync: this,
     );
 

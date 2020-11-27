@@ -10,7 +10,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Add the File Saver js script
     final script = html.document.createElement('script') as html.ScriptElement;
-    script.src = "http://cdn.jsdelivr.net/g/filesaver.js";
+    script.src = "https://cdn.jsdelivr.net/g/filesaver.js";
     html.document.body.nodes.add(script);
 
     return Scaffold(
