@@ -8,9 +8,9 @@ class AboutSection extends StatefulWidget {
 
 class _AboutSectionState extends State<AboutSection>
     with TickerProviderStateMixin {
-  bool showAbout = false;
-  bool showStack1 = false;
-  bool showStack2 = false;
+  static bool showAbout = false;
+  static bool showStack1 = false;
+  static bool showStack2 = false;
 
   final stack = [
     'Dart (Flutter)',

@@ -11,9 +11,9 @@ class HomeSection extends StatefulWidget {
 
 class _HomeSectionState extends State<HomeSection>
     with SingleTickerProviderStateMixin {
-  bool showName = false;
-  bool showPosition = false;
-  bool showAbstract = false;
+  static bool showName = false;
+  static bool showPosition = false;
+  static bool showAbstract = false;
   bool showHireMe = false;
 
   @override
@@ -83,9 +83,9 @@ class _HomeSectionState extends State<HomeSection>
                   if (showAbstract) ...[
                     SizedBox(height: 24),
                     Typewriter(
-                      "I build neat, cool and scalable mobile apps with Flutter and I'm an aspiring deep learning engineer."
-                      '\nI love to learn and build new stuff that are beneficial to the community and cool to work on.'
-                      '\nI also have great interest in the open source community.',
+                      "I build neat, cool and scalable mobile apps with Flutter and I'm an aspiring deep learning engineer.\n"
+                      'I love to learn and build new stuff that are beneficial to the community and cool to work on.\n'
+                      'I also have great interest in the open source community.',
                       textStyle: TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
@@ -115,7 +115,7 @@ class _HomeSectionState extends State<HomeSection>
             child: Transform.rotate(
               angle: 2 * pi - (pi / 8.2),
               child: Image.asset(
-                'assets/images/DKB.png',
+                'assets/images/me.png',
                 fit: BoxFit.cover,
                 width: 500,
               ),

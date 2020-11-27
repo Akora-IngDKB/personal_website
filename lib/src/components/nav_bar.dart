@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:personal_web/src/utils/url_helper.dart';
 
 class Navbar extends StatefulWidget {
+  final int selectedIndex;
+  final void Function(int index) onItemSelected;
+
+  Navbar({this.selectedIndex = 0, @required this.onItemSelected});
+
   @override
   _NavbarState createState() => _NavbarState();
 }
 
 class _NavbarState extends State<Navbar> {
-  int selectedIndex = 0;
+  int selectedIndex;
 
   final textStyle = TextStyle(
     color: Colors.white,
@@ -23,6 +28,13 @@ class _NavbarState extends State<Navbar> {
     'Blog',
     'Resume',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    selectedIndex = widget.selectedIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +85,10 @@ class _NavbarState extends State<Navbar> {
                         setState(() {
                           selectedIndex = items.indexOf(item);
                         });
+
+                        if (widget.onItemSelected != null) {
+                          widget.onItemSelected(selectedIndex);
+                        }
                     }
                   },
                   child: Column(
