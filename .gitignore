@@ -40,6 +40,11 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
+# Non-Web platforms
+/android/
+/ios/
+/linux/
+
 # Android Studio will place build artifacts here
 /android/app/debug
 /android/app/profile
