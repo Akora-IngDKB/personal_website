@@ -1,16 +1,25 @@
-# personal_web
+# My Portfolio Website - Source Code
 
-A new Flutter project.
+Source code for my [portfolio website](https://akora-ingdkb.me) built with [Flutter](https://flutter.dev).
 
-## Getting Started
+<img src="./assets/images/shot_home.png" alt="Homepage" />
 
-This project is a starting point for a Flutter application.
+## Steps to Reproduce
+1. Locate the source code at `./lib/` and edit per your choice.
 
-A few resources to get you started if this is your first Flutter project:
+2. The website is hosted with [Github Page](https://pages.github.com/) with the local repository located at `../../Akora-IngDKB.github.io` (two directories above the working directory).  
+It is deployed with the `./deploy.sh` script.  
+Make the following changes to suit your directory structure:
+```bash
+# Copy the generated files into the Github pages repo directory
+Line 24: cp -R build/web/. <your-local-ghpages-repo-dir-path>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# Change into the Github pages repo directory, commit the changes and push
+Line 29: cd <your-local-ghpages-repo-dir-path>
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Finally, run `./deploy.sh` in a terminal with the root directory to deploy.  
+Alternatively, you can add an optional commit message (defaults to "Update") which will be used for committing in the gh-pages repo like so:
+```bash
+./deploy.sh "My portfolio rework"
+```
