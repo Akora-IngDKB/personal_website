@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personal_web/src/components/nav_bar.dart';
 import 'package:personal_web/src/sections/about.dart';
-import 'package:personal_web/src/sections/home.dart';
+import 'package:personal_web/src/sections/home/home.dart';
 
 class PageBody extends StatefulWidget {
   @override

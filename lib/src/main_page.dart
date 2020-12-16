@@ -6,6 +6,7 @@ import 'package:personal_web/src/body.dart';
 import 'package:personal_web/src/components/drawer.dart';
 import 'package:personal_web/src/components/nav_bar.dart';
 import 'package:personal_web/src/components/social_media_bar.dart';
+import 'package:personal_web/src/sections/home/home_mobile.dart';
 
 class MobilePage extends StatefulWidget {
   @override
@@ -15,9 +16,7 @@ class MobilePage extends StatefulWidget {
 class _MobilePageState extends State<MobilePage> {
   int pageIndex = 0;
   final pages = [
-    Container(
-      color: Colors.orange,
-    ),
+    HomeSectionMobile(),
     Container(
       color: Colors.amber,
     )
