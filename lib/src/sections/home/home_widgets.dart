@@ -43,10 +43,12 @@ class _IntroductionState extends State<Introduction>
               letterSpacing: 1.4,
             ),
             onEnd: () {
-              setState(() {
-                showName = true;
-                helloSeen = true;
-              });
+              if (mounted) {
+                setState(() {
+                  showName = true;
+                  helloSeen = true;
+                });
+              }
             },
           ),
           if (showName) ...[
@@ -60,10 +62,12 @@ class _IntroductionState extends State<Introduction>
                 fontWeight: FontWeight.w700,
               ),
               onEnd: () {
-                setState(() {
-                  showPosition = true;
-                  nameSeen = true;
-                });
+                if (mounted) {
+                  setState(() {
+                    showPosition = true;
+                    nameSeen = true;
+                  });
+                }
               },
             ),
           ],
@@ -78,10 +82,12 @@ class _IntroductionState extends State<Introduction>
                 fontWeight: FontWeight.w500,
               ),
               onEnd: () {
-                setState(() {
-                  showAbstract = true;
-                  positionSeen = true;
-                });
+                if (mounted) {
+                  setState(() {
+                    showAbstract = true;
+                    positionSeen = true;
+                  });
+                }
               },
             ),
           ],
@@ -100,10 +106,12 @@ class _IntroductionState extends State<Introduction>
               ),
               onEnd: () {
                 Future.delayed(Duration(milliseconds: 500), () {
-                  setState(() {
-                    showHireMe = true;
-                    abstractSeen = true;
-                  });
+                  if (mounted) {
+                    setState(() {
+                      showHireMe = true;
+                      abstractSeen = true;
+                    });
+                  }
                 });
               },
             ),

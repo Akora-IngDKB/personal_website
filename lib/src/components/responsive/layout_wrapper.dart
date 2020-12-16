@@ -11,9 +11,11 @@ class _LayoutWrapperState extends State<LayoutWrapper> {
   int currentPage = 0;
 
   void onItemSelected(int index) {
-    setState(() {
-      currentPage = index;
-    });
+    if (mounted) {
+      setState(() {
+        currentPage = index;
+      });
+    }
   }
 
   @override

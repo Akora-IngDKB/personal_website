@@ -59,10 +59,12 @@ class _AboutContentState extends State<AboutContent>
               letterSpacing: 1.4,
             ),
             onEnd: () {
-              setState(() {
-                showAbout = true;
-                whoSeen = true;
-              });
+              if (mounted) {
+                setState(() {
+                  showAbout = true;
+                  whoSeen = true;
+                });
+              }
             },
           ),
           Container(
@@ -86,10 +88,12 @@ class _AboutContentState extends State<AboutContent>
                 height: 1.3,
               ),
               onEnd: () {
-                setState(() {
-                  showStack1 = true;
-                  aboutSeen = true;
-                });
+                if (mounted) {
+                  setState(() {
+                    showStack1 = true;
+                    aboutSeen = true;
+                  });
+                }
               },
             ),
           if (showStack1) ...[
@@ -105,10 +109,12 @@ class _AboutContentState extends State<AboutContent>
                 letterSpacing: 1.4,
               ),
               onEnd: () {
-                setState(() {
-                  showStack2 = true;
-                  stack1Seen = true;
-                });
+                if (mounted) {
+                  setState(() {
+                    showStack2 = true;
+                    stack1Seen = true;
+                  });
+                }
               },
             ),
             Container(
@@ -161,9 +167,11 @@ class _AboutContentState extends State<AboutContent>
             letterSpacing: 1.4,
           ),
           onEnd: () {
-            setState(() {
-              stack2Seen = true;
-            });
+            if (mounted) {
+              setState(() {
+                stack2Seen = true;
+              });
+            }
           },
         ),
       ],
