@@ -1,6 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:personal_web/src/utils/url_helper.dart';
 
+class MobileNavbar extends StatelessWidget implements PreferredSizeWidget {
+  final textStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 17,
+    fontWeight: FontWeight.w700,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      elevation: 0,
+      actions: [
+        IconButton(
+          color: Colors.teal,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            Scaffold.of(context).openEndDrawer();
+          },
+        )
+      ],
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CircleAvatar(
+            backgroundColor: Colors.teal,
+            radius: 15,
+            child: Text(
+              'D',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(width: 10),
+          RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              text: 'Akora I',
+              style: textStyle.copyWith(
+                color: Colors.black.withOpacity(0.75),
+                fontSize: 18,
+                fontFamily: 'Ubuntu',
+              ),
+              children: [
+                TextSpan(
+                  text: 'ng. DKB',
+                  style: textStyle.copyWith(
+                    color: Colors.teal,
+                    fontSize: 18,
+                    fontFamily: 'Ubuntu',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(56.0);
+}
+
 class Navbar extends StatefulWidget {
   final int selectedIndex;
   final void Function(int index) onItemSelected;
@@ -119,7 +189,7 @@ class _NavbarState extends State<Navbar> {
                     }
                   },
                   child: item == 'Resume'
-                      ? _ResumeButton()
+                      ? ResumeButton()
                       : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -156,12 +226,12 @@ class _NavbarState extends State<Navbar> {
   }
 }
 
-class _ResumeButton extends StatefulWidget {
+class ResumeButton extends StatefulWidget {
   @override
   _ResumeButtonState createState() => _ResumeButtonState();
 }
 
-class _ResumeButtonState extends State<_ResumeButton> {
+class _ResumeButtonState extends State<ResumeButton> {
   bool hovered = false;
 
   @override

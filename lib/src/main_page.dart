@@ -3,7 +3,43 @@ import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
 import 'package:personal_web/src/body.dart';
+import 'package:personal_web/src/components/drawer.dart';
+import 'package:personal_web/src/components/nav_bar.dart';
 import 'package:personal_web/src/components/social_media_bar.dart';
+import 'package:personal_web/src/sections/about/about_mobile.dart';
+import 'package:personal_web/src/sections/home/home_mobile.dart';
+
+class MobilePage extends StatefulWidget {
+  @override
+  _MobilePageState createState() => _MobilePageState();
+}
+
+class _MobilePageState extends State<MobilePage> {
+  int pageIndex = 0;
+  final pages = [
+    HomeSectionMobile(),
+    AboutSectionMobile(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: MobileNavbar(),
+      endDrawer: AppDrawer(
+        selectedIndex: pageIndex,
+        onItemSelected: (index) {
+          setState(() {
+            pageIndex = index;
+          });
+        },
+      ),
+      body: AnimatedSwitcher(
+        duration: kThemeAnimationDuration,
+        child: pages[pageIndex],
+      ),
+    );
+  }
+}
 
 class MainPage extends StatelessWidget {
   @override

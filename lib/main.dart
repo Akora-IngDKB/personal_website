@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:personal_web/src/main_page.dart';
+import 'package:personal_web/src/components/responsive/layout_wrapper.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         fontFamily: 'Ubuntu',
       ),
-      home: MainPage(),
+      home: LayoutWrapper(),
     );
   }
 }
