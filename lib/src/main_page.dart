@@ -10,12 +10,16 @@ import 'package:personal_web/src/sections/about/about_mobile.dart';
 import 'package:personal_web/src/sections/home/home_mobile.dart';
 
 class MobilePage extends StatefulWidget {
+  final int pageIndex;
+  final void Function(int index) onItemSelected;
+
+  const MobilePage({@required this.pageIndex, this.onItemSelected});
+
   @override
   _MobilePageState createState() => _MobilePageState();
 }
 
 class _MobilePageState extends State<MobilePage> {
-  int pageIndex = 0;
   final pages = [
     HomeSectionMobile(),
     AboutSectionMobile(),
@@ -26,22 +30,23 @@ class _MobilePageState extends State<MobilePage> {
     return Scaffold(
       appBar: MobileNavbar(),
       endDrawer: AppDrawer(
-        selectedIndex: pageIndex,
-        onItemSelected: (index) {
-          setState(() {
-            pageIndex = index;
-          });
-        },
+        selectedIndex: widget.pageIndex,
+        onItemSelected: widget.onItemSelected,
       ),
       body: AnimatedSwitcher(
         duration: kThemeAnimationDuration,
-        child: pages[pageIndex],
+        child: pages[widget.pageIndex],
       ),
     );
   }
 }
 
 class MainPage extends StatelessWidget {
+  final int pageIndex;
+  final void Function(int index) onItemSelected;
+
+  const MainPage({@required this.pageIndex, this.onItemSelected});
+
   @override
   Widget build(BuildContext context) {
     // Add the File Saver js script
@@ -53,7 +58,7 @@ class MainPage extends StatelessWidget {
       body: Stack(
         children: [
           CustomPaint(painter: _BackgroundPainter(), size: Size.infinite),
-          PageBody(),
+          PageBody(pageIndex: pageIndex, onItemSelected: onItemSelected),
           Align(alignment: Alignment.centerLeft, child: SocialMediaBar()),
         ],
       ),
