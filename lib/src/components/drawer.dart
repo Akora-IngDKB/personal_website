@@ -75,6 +75,8 @@ class _AppDrawerState extends State<AppDrawer> {
                   //   widget.onItemSelected(selectedIndex);
                   // }
                 }
+
+                Navigator.pop(context);
               },
               child: item == 'Resume'
                   ? SizedBox(width: 160, child: ResumeButton())
