@@ -163,12 +163,14 @@ class _NavbarState extends State<Navbar> {
                     switch (item) {
                       case 'Home':
                       case 'About':
-                        setState(() {
-                          selectedIndex = items.indexOf(item);
-                        });
+                        if (mounted) {
+                          setState(() {
+                            selectedIndex = items.indexOf(item);
+                          });
 
-                        if (widget.onItemSelected != null) {
-                          widget.onItemSelected(selectedIndex);
+                          if (widget.onItemSelected != null) {
+                            widget.onItemSelected(selectedIndex);
+                          }
                         }
                         break;
                       case 'Resume':

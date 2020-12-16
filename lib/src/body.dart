@@ -4,12 +4,16 @@ import 'package:personal_web/src/sections/about/about.dart';
 import 'package:personal_web/src/sections/home/home.dart';
 
 class PageBody extends StatefulWidget {
+  final int pageIndex;
+  final void Function(int index) onItemSelected;
+
+  const PageBody({@required this.pageIndex, this.onItemSelected});
+
   @override
   _PageBodyState createState() => _PageBodyState();
 }
 
 class _PageBodyState extends State<PageBody> {
-  int pageIndex = 0;
   final pages = [HomeSection(), AboutSection()];
 
   @override
@@ -17,16 +21,13 @@ class _PageBodyState extends State<PageBody> {
     return Column(
       children: [
         Navbar(
-          onItemSelected: (index) {
-            setState(() {
-              pageIndex = index;
-            });
-          },
+          selectedIndex: widget.pageIndex,
+          onItemSelected: widget.onItemSelected,
         ),
         Expanded(
           child: AnimatedSwitcher(
             duration: kThemeAnimationDuration,
-            child: pages[pageIndex],
+            child: pages[widget.pageIndex],
           ),
         ),
       ],
