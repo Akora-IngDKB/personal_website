@@ -19,7 +19,7 @@ class _HomeSectionState extends State<HomeSection>
   static bool showName = false;
   static bool showPosition = false;
   static bool showAbstract = false;
-  bool showHireMe = false;
+  static bool showHireMe = false;
 
   @override
   Widget build(BuildContext context) {
